@@ -1,0 +1,1795 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+
+/* =========================
+   COLORES TAGGY
+========================= */
+
+:root {
+
+    --cream: #FFF8ED;
+
+    --orange: #EF8A27;
+
+    --yellow: #F7C957;
+
+    --sage: #86A79B;
+
+    --blue: #9BC3CE;
+
+    --coral: #D9826B;
+
+    --black: #202020;
+
+    --white: #FFFFFF;
+
+}
+
+
+/* =========================
+   GENERAL
+========================= */
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    margin: 0;
+
+    background: var(--cream);
+
+    color: var(--black);
+
+    font-family: "DM Sans", sans-serif;
+
+    overflow-x: hidden;
+
+}
+
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
+
+h1,
+h2,
+h3 {
+
+    font-family: "Baloo 2", sans-serif;
+
+}
+
+
+h1 {
+
+    font-size: clamp(4rem, 8vw, 7rem);
+
+    line-height: .9;
+
+    letter-spacing: -4px;
+
+    margin: 20px 0;
+
+}
+
+
+h2 {
+
+    font-size: 4rem;
+
+    line-height: .95;
+
+}
+
+
+h3 {
+
+    font-size: 1.7rem;
+
+}
+
+
+p {
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================
+   FONDO INTERACTIVO
+========================= */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    overflow: hidden;
+
+    background: var(--cream);
+
+}
+
+
+.orb {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(3px);
+
+    opacity: .55;
+
+    transition: transform .5s ease;
+
+}
+
+
+.orb1 {
+
+    width: 350px;
+
+    height: 350px;
+
+    background:
+        radial-gradient(circle at 30% 30%,
+        #F7C957,
+        #EF8A27);
+
+    top: 5%;
+
+    left: -100px;
+
+}
+
+
+.orb2 {
+
+    width: 300px;
+
+    height: 300px;
+
+    background:
+        radial-gradient(circle at 30% 30%,
+        #9BC3CE,
+        #86A79B);
+
+    right: -100px;
+
+    top: 20%;
+
+}
+
+
+.orb3 {
+
+    width: 230px;
+
+    height: 230px;
+
+    background:
+        radial-gradient(circle at 30% 30%,
+        #F3A18C,
+        #D9826B);
+
+    bottom: -70px;
+
+    left: 30%;
+
+}
+
+
+.orb4 {
+
+    width: 190px;
+
+    height: 190px;
+
+    background:
+        radial-gradient(circle at 30% 30%,
+        #C9E3E8,
+        #9BC3CE);
+
+    right: 20%;
+
+    bottom: 10%;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
+
+    background:
+        rgba(255,248,237,.88);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom:
+        1px solid rgba(32,32,32,.08);
+
+}
+
+
+nav {
+
+    width: min(1150px, 92%);
+
+    min-height: 85px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.logo {
+
+    width: 125px;
+
+    height: auto;
+
+}
+
+
+.menu {
+
+    display: flex;
+
+    gap: 7px;
+
+}
+
+
+.menu a {
+
+    padding: 12px 15px;
+
+    border-radius: 30px;
+
+    font-size: .9rem;
+
+    font-weight: 700;
+
+    transition: .2s;
+
+}
+
+
+.menu a:hover,
+.menu a.active {
+
+    background: var(--yellow);
+
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+
+    width: min(1150px, 92%);
+
+    min-height: 700px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 60px;
+
+}
+
+
+.hero-text {
+
+    max-width: 650px;
+
+}
+
+
+.hero h1 span {
+
+    color: var(--orange);
+
+}
+
+
+.hero-text p {
+
+    font-size: 1.15rem;
+
+    max-width: 600px;
+
+}
+
+
+.tag {
+
+    display: inline-block;
+
+    background: var(--yellow);
+
+    padding: 9px 16px;
+
+    border-radius: 30px;
+
+    font-size: .78rem;
+
+    font-weight: 800;
+
+    letter-spacing: .04em;
+
+}
+
+
+.buttons {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.button {
+
+    display: inline-flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 14px 22px;
+
+    border-radius: 30px;
+
+    border: 1.5px solid var(--black);
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+
+.button:hover {
+
+    transform: translateY(-3px);
+
+}
+
+
+.primary {
+
+    background: var(--orange);
+
+    border-color: var(--orange);
+
+}
+
+
+.secondary {
+
+    background: white;
+
+}
+
+
+/* =========================
+   HERO ANIMAL
+========================= */
+
+.hero-image {
+
+    position: relative;
+
+    min-height: 500px;
+
+    display: grid;
+
+    place-items: center;
+
+}
+
+
+.circle {
+
+    width: 430px;
+
+    height: 430px;
+
+    border-radius: 50%;
+
+    background: var(--sage);
+
+    position: absolute;
+
+}
+
+
+.animal-card {
+
+    position: relative;
+
+    width: 390px;
+
+    padding: 25px;
+
+    background:
+        rgba(255,255,255,.75);
+
+    backdrop-filter: blur(15px);
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.10);
+
+    transform: rotate(2deg);
+
+}
+
+
+.small-lines {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.small-lines span {
+
+    width: 55px;
+
+    height: 8px;
+
+    border-radius: 20px;
+
+    background: var(--orange);
+
+}
+
+
+.small-lines span:nth-child(2) {
+
+    background: var(--blue);
+
+}
+
+
+.small-lines span:nth-child(3) {
+
+    background: var(--yellow);
+
+}
+
+
+.animal-box {
+
+    width: 100%;
+
+    min-height: 230px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            140deg,
+            var(--blue),
+            var(--sage)
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+
+}
+
+
+.animal-box img {
+
+    max-width: 95%;
+
+    max-height: 270px;
+
+    object-fit: contain;
+
+}
+
+
+/* =========================
+   SECCIONES
+========================= */
+
+.section {
+
+    width: min(1150px, 92%);
+
+    margin: auto;
+
+    padding: 100px 0;
+
+}
+
+
+.section-title {
+
+    max-width: 700px;
+
+    margin-bottom: 40px;
+
+}
+
+
+.section-title h2 {
+
+    margin: 20px 0;
+
+}
+
+
+.section-title p {
+
+    max-width: 600px;
+
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.card {
+
+    background:
+        rgba(255,255,255,.75);
+
+    padding: 30px;
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.08);
+
+    border:
+        1px solid rgba(0,0,0,.07);
+
+    transition: .25s;
+
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-7px);
+
+}
+
+
+.card.yellow {
+
+    background: var(--yellow);
+
+}
+
+
+.card.blue {
+
+    background: var(--blue);
+
+}
+
+
+.card.coral {
+
+    background: var(--coral);
+
+}
+
+
+.icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 15px;
+
+    background: var(--cream);
+
+    font-size: 1.4rem;
+
+    margin-bottom: 20px;
+
+}
+
+
+.number {
+
+    font-family: "Baloo 2";
+
+    font-size: 2.5rem;
+
+    font-weight: 800;
+
+    color: var(--orange);
+
+}
+
+
+.card-link {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================
+   PÁGINAS INTERNAS
+========================= */
+
+.page-title {
+
+    width: min(1150px, 92%);
+
+    margin: auto;
+
+    padding: 100px 0 50px;
+
+}
+
+
+.page-title h1 span {
+
+    color: var(--orange);
+
+}
+
+
+.page-title p {
+
+    max-width: 700px;
+
+    font-size: 1.15rem;
+
+}
+
+
+/* =========================
+   FORMULARIOS
+========================= */
+
+.form-section {
+
+    width: min(1150px, 92%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr .8fr;
+
+    gap: 25px;
+
+}
+
+
+.form-card,
+.side-card {
+
+    background:
+        rgba(255,255,255,.78);
+
+    border-radius: 30px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.08);
+
+}
+
+
+form {
+
+    margin-top: 25px;
+
+}
+
+
+label {
+
+    display: block;
+
+    font-weight: 700;
+
+    margin:
+        18px 0 8px;
+
+}
+
+
+input,
+textarea,
+select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 15px;
+
+    border:
+        1.5px solid rgba(32,32,32,.15);
+
+    background: var(--cream);
+
+    font-family: inherit;
+
+    outline: none;
+
+}
+
+
+textarea {
+
+    min-height: 140px;
+
+    resize: vertical;
+
+}
+
+
+input:focus,
+textarea:focus,
+select:focus {
+
+    border-color: var(--orange);
+
+}
+
+
+.notice {
+
+    background: var(--yellow);
+
+    padding: 17px;
+
+    border-radius: 18px;
+
+    line-height: 1.5;
+
+}
+
+
+.side-card h3 {
+
+    margin-top: 25px;
+
+}
+
+
+/* =========================
+   REPORTES Y FORO
+========================= */
+
+#reportList,
+#forumList {
+
+    display: grid;
+
+    gap: 15px;
+
+}
+
+
+.report,
+.forum-post {
+
+    background:
+        rgba(255,255,255,.8);
+
+    border-radius: 25px;
+
+    padding: 25px;
+
+    border:
+        1px solid rgba(0,0,0,.08);
+
+}
+
+
+.report h3,
+.forum-post h3 {
+
+    margin-bottom: 5px;
+
+}
+
+
+.empty {
+
+    padding: 35px;
+
+    text-align: center;
+
+    border:
+        1.5px dashed rgba(0,0,0,.2);
+
+    border-radius: 20px;
+
+}
+
+
+/* =========================
+   VETERINARIAS
+========================= */
+
+.vet-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 20px;
+
+}
+
+
+.vet-card {
+
+    background:
+        rgba(255,255,255,.8);
+
+    padding: 28px;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.07);
+
+}
+
+
+.hours {
+
+    background: var(--cream);
+
+    padding: 16px;
+
+    border-radius: 18px;
+
+    line-height: 1.7;
+
+    margin-top: 20px;
+
+}
+
+
+.add-card {
+
+    border:
+        2px dashed var(--blue);
+
+}
+
+
+/* =========================
+   ALIANZA
+========================= */
+
+.alliance-box {
+
+    background: var(--yellow);
+
+    border-radius: 35px;
+
+    padding: 40px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+
+}
+
+
+.alliance-box h2 {
+
+    max-width: 600px;
+
+}
+
+
+/* =========================
+   CONTACTO
+========================= */
+
+.contact-section {
+
+    width: min(1150px, 92%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        .9fr 1.1fr;
+
+    gap: 25px;
+
+}
+
+
+.contact-info {
+
+    background:
+        rgba(255,255,255,.7);
+
+    padding: 30px;
+
+    border-radius: 30px;
+
+}
+
+
+.contact-info h2 {
+
+    font-size: 3.2rem;
+
+}
+
+
+.contact-item {
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+    border-bottom:
+        1px solid rgba(0,0,0,.08);
+
+    padding: 15px 0;
+
+}
+
+
+.contact-item p {
+
+    margin: 5px 0;
+
+}
+
+
+/* =========================
+   ANIMALITO FLOTANTE
+========================= */
+
+.floating-animal {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 20px;
+
+    width: 140px;
+
+    z-index: 10;
+
+    pointer-events: none;
+
+    animation: floating 4s ease-in-out infinite;
+
+}
+
+
+.floating-animal img {
+
+    width: 100%;
+
+    height: 140px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 10px 10px rgba(0,0,0,.10)
+        );
+
+}
+
+
+@keyframes floating {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-12px)
+            rotate(2deg);
+
+    }
+
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+    }
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    width: min(1150px,92%);
+
+    margin: 60px auto 0;
+
+    padding: 50px 0 70px;
+
+    border-top:
+        1px solid rgba(0,0,0,.1);
+
+}
+
+
+footer h2 {
+
+    color: var(--orange);
+
+    margin: 0;
+
+}
+
+
+footer p {
+
+    margin-top: 5px;
+
+}
+
+
+footer span {
+
+    opacity: .55;
+
+    font-size: .85rem;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 850px) {
+
+
+    .menu {
+
+        gap: 2px;
+
+    }
+
+
+    .menu a {
+
+        padding:
+            9px 8px;
+
+        font-size:
+            .78rem;
+
+    }
+
+
+    .hero {
+
+        grid-template-columns: 1fr;
+
+        padding-top: 60px;
+
+    }
+
+
+    .hero-image {
+
+        min-height: 400px;
+
+    }
+
+
+    .cards {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .form-section {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .vet-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .contact-section {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .alliance-box {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+}
+
+
+@media(max-width: 550px) {
+
+
+    nav {
+
+        min-height: 70px;
+
+    }
+
+
+    .logo {
+
+        width: 100px;
+
+    }
+
+
+    .menu a {
+
+        font-size: .68rem;
+
+        padding: 8px 6px;
+
+    }
+
+
+    h1 {
+
+        font-size: 4rem;
+
+    }
+
+
+    h2 {
+
+        font-size: 3rem;
+
+    }
+
+
+    .animal-card {
+
+        width: 90%;
+
+    }
+
+
+    .circle {
+
+        width: 330px;
+
+        height: 330px;
+
+    }
+
+
+    .floating-animal {
+
+        width: 100px;
+
+        right: 5px;
+
+    }
+
+
+    .floating-animal img {
+
+        height: 100px;
+
+    }
+
+}
+/* ========================================
+   TIENDA TAGGY
+======================================== */
+
+.shop-section {
+    width: min(1150px, 92%);
+    margin: auto;
+    padding: 20px 0 80px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: rgba(255,255,255,.8);
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.08);
+    border: 1px solid rgba(0,0,0,.06);
+    transition: .25s;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+}
+
+.product-image {
+    width: 100%;
+    height: 300px;
+    border-radius: 23px;
+    overflow: hidden;
+    background: var(--blue);
+    margin-bottom: 22px;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    margin: 17px 0 8px;
+}
+
+.product-card p {
+    opacity: .75;
+}
+
+.product-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.price {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.8rem;
+    color: var(--orange);
+}
+
+.add-cart {
+    width: 100%;
+}
+
+.cart-menu {
+    background: var(--cream);
+}
+
+.shop-info {
+    background: var(--yellow);
+    padding: 45px;
+    border-radius: 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.shop-info h2 {
+    margin: 20px 0 10px;
+    max-width: 650px;
+}
+
+
+/* ========================================
+   CARRITO
+======================================== */
+
+.cart-layout {
+    width: min(1150px, 92%);
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1.4fr .6fr;
+    gap: 30px;
+
+    padding-bottom: 80px;
+}
+
+.cart-items {
+    display: grid;
+    gap: 15px;
+}
+
+.cart-item {
+    background: rgba(255,255,255,.82);
+    border-radius: 25px;
+    padding: 18px;
+
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    align-items: center;
+    gap: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+
+.cart-item-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    object-fit: cover;
+    background: var(--blue);
+}
+
+.cart-item-info h3 {
+    margin: 0 0 5px;
+}
+
+.cart-item-info p {
+    margin: 0;
+    opacity: .65;
+}
+
+.cart-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.quantity-button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+
+    border: none;
+    background: var(--yellow);
+
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+.remove-item {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--coral);
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.cart-item-price {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.cart-summary {
+    background: rgba(255,255,255,.85);
+    border-radius: 30px;
+    padding: 28px;
+    height: fit-content;
+    position: sticky;
+    top: 110px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.08);
+}
+
+.cart-summary h3 {
+    font-size: 2rem;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+
+    border-bottom: 1px solid rgba(0,0,0,.08);
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 15px;
+    padding-top: 15px;
+
+    font-size: 1.3rem;
+}
+
+.summary-total strong {
+    color: var(--orange);
+    font-size: 1.5rem;
+}
+
+.checkout-button {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.continue-shopping {
+    display: inline-block;
+    margin-top: 25px;
+    font-weight: 800;
+}
+
+.empty-cart {
+    background: rgba(255,255,255,.8);
+    padding: 50px 30px;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.empty-cart h3 {
+    font-size: 2rem;
+}
+
+
+/* ========================================
+   CHECKOUT
+======================================== */
+
+.checkout-title {
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+.checkout-title h2 {
+    margin: 20px 0;
+}
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.checkout-card {
+    background: rgba(255,255,255,.82);
+    border-radius: 30px;
+    padding: 28px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.07);
+}
+
+.checkout-card h3 {
+    margin: 20px 0;
+}
+
+.order-confirmation {
+    background: var(--yellow);
+
+    margin-top: 25px;
+    padding: 35px;
+
+    border-radius: 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.order-confirmation h3 {
+    margin: 15px 0 5px;
+    font-size: 2rem;
+}
+
+.purchase-success {
+    display: none;
+
+    background: rgba(255,255,255,.9);
+
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 50px;
+
+    text-align: center;
+    border-radius: 35px;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.1);
+}
+
+.purchase-success.show {
+    display: block;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 25px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+    background: var(--sage);
+
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.purchase-success h2 {
+    margin: 20px 0 10px;
+}
+
+
+/* ========================================
+   RESPONSIVE TIENDA
+======================================== */
+
+@media(max-width: 900px) {
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-summary {
+        position: static;
+    }
+
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .shop-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+
+@media(max-width: 600px) {
+
+    .cart-item {
+        grid-template-columns: 90px 1fr;
+    }
+
+    .cart-item-image {
+        width: 90px;
+        height: 90px;
+    }
+
+    .cart-item-price {
+        grid-column: 2;
+    }
+
+    .order-confirmation {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+/* ==========================================================
+   TAGGY · VERSIÓN PRO (animaciones y detalles de sitio real)
+========================================================== */
+::selection{background:var(--orange);color:#fff}
+.loader{position:fixed;inset:0;z-index:999;background:var(--cream);display:grid;place-items:center;animation:loaderOut .6s ease 1s forwards;pointer-events:none}
+.loader img{width:190px;animation:loaderPop 1s ease both}
+@keyframes loaderPop{0%{transform:scale(.6) rotate(-6deg);opacity:0}60%{transform:scale(1.08) rotate(2deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+@keyframes loaderOut{to{opacity:0;visibility:hidden}}
+.progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--yellow),var(--orange),var(--coral));z-index:100}
+header{transition:box-shadow .3s,background .3s}
+header.scrolled{box-shadow:0 10px 30px rgba(0,0,0,.08)}
+header.scrolled nav{min-height:68px}
+nav{transition:min-height .3s}
+.menu a{position:relative}
+.menu a:hover{transform:translateY(-2px)}
+.menu-toggle{display:none;width:46px;height:46px;border:0;border-radius:50%;background:var(--yellow);cursor:pointer;flex-direction:column;gap:5px;align-items:center;justify-content:center}
+.menu-toggle span{width:20px;height:2.5px;background:var(--black);border-radius:3px;transition:.3s}
+.menu-toggle.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.menu-toggle.open span:nth-child(2){opacity:0}
+.menu-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* entrada del hero */
+.hero-text>*{opacity:0;animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.hero-text>*:nth-child(1){animation-delay:1.1s}.hero-text>*:nth-child(2){animation-delay:1.2s}
+.hero-text>*:nth-child(3){animation-delay:1.3s}.hero-text>*:nth-child(4){animation-delay:1.4s}
+.hero-image{opacity:0;animation:rise 1s cubic-bezier(.2,.7,.2,1) 1.3s forwards}
+.hero h1 span{display:inline-block;animation:wiggle 3s ease-in-out 2.4s infinite}
+.circle{animation:pulse 6s ease-in-out infinite}
+.animal-card{animation:bob 5s ease-in-out infinite}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes wiggle{0%,100%{transform:rotate(0)}10%{transform:rotate(-4deg) scale(1.05)}20%{transform:rotate(3deg)}30%{transform:rotate(0)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes bob{0%,100%{transform:rotate(2deg) translateY(0)}50%{transform:rotate(-1deg) translateY(-14px)}}
+@keyframes pop{from{opacity:0;transform:scale(.92) translateY(14px)}to{opacity:1;transform:none}}
+.orb1{animation:drift 14s ease-in-out infinite}.orb2{animation:drift 18s ease-in-out infinite reverse}
+.orb3{animation:drift 16s ease-in-out infinite}.orb4{animation:drift 20s ease-in-out infinite reverse}
+@keyframes drift{0%,100%{margin:0}50%{margin:30px -25px}}
+
+/* aparecer al hacer scroll */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+.report,.forum-post{animation:pop .5s ease both}
+
+/* botones con brillo */
+.button{position:relative;overflow:hidden}
+.button::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .6s}
+.button:hover::after{left:130%}
+.button:active{transform:scale(.96)}
+.product-image img,.animal-box img{transition:transform .6s ease}
+.product-card:hover .product-image img,.animal-box:hover img{transform:scale(1.08)}
+input:focus,textarea:focus,select:focus{box-shadow:0 0 0 4px rgba(239,138,39,.18)}
+
+/* franja que se mueve */
+.marquee{overflow:hidden;background:var(--black);color:var(--cream);padding:18px 0;transform:rotate(-1.2deg);margin:30px -2%}
+.marquee-track{display:flex;gap:40px;width:max-content;animation:scroll 28s linear infinite;font-family:"Baloo 2",sans-serif;font-size:1.6rem;font-weight:700;white-space:nowrap}
+.marquee-track b{color:var(--orange)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* números */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:center}
+.stat{background:rgba(255,255,255,.75);border-radius:30px;padding:35px 20px;box-shadow:0 15px 35px rgba(0,0,0,.07)}
+.stat strong{display:block;font-family:"Baloo 2",sans-serif;font-size:4rem;line-height:1;color:var(--orange)}
+.stat span{font-weight:700}
+
+/* preguntas frecuentes */
+.faq-list{display:grid;gap:12px;max-width:800px}
+.faq-list details{background:rgba(255,255,255,.8);border-radius:22px;padding:20px 26px;border:1px solid rgba(0,0,0,.07);transition:.3s}
+.faq-list details[open]{background:var(--yellow)}
+.faq-list summary{cursor:pointer;font-weight:800;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between;gap:15px}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";font-size:1.6rem;line-height:1;transition:transform .3s}
+.faq-list details[open] summary::after{transform:rotate(45deg)}
+.faq-list p{margin:12px 0 0}
+
+/* banda final */
+.cta-band{background:var(--orange);border-radius:40px;padding:60px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-band h2{margin:0 0 15px}
+.cta-band .button.secondary{margin-top:10px}
+.cta-band::before,.cta-band::after{content:"🐾";position:absolute;font-size:7rem;opacity:.15;animation:wiggle 5s infinite}
+.cta-band::before{left:3%;top:5%}.cta-band::after{right:4%;bottom:0}
+
+/* footer completo */
+footer{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
+footer h4{font-family:"Baloo 2",sans-serif;font-size:1.1rem;margin:0 0 12px}
+footer a{display:block;padding:4px 0;opacity:.75;transition:.2s}
+footer a:hover{opacity:1;color:var(--orange);transform:translateX(4px)}
+.footer-bottom{grid-column:1/-1;opacity:.55;font-size:.85rem;border-top:1px solid rgba(0,0,0,.08);padding-top:20px}
+
+/* avisos y huellitas */
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,120px);background:var(--black);color:#fff;padding:16px 26px;border-radius:30px;font-weight:700;z-index:200;transition:transform .5s cubic-bezier(.2,1.4,.4,1);max-width:90%;text-align:center}
+.toast.show{transform:translate(-50%,0)}
+.paw{position:fixed;pointer-events:none;z-index:150;font-size:1.6rem;animation:pawUp 1s ease-out forwards}
+@keyframes pawUp{to{transform:translateY(-90px) rotate(var(--r));opacity:0}}
+
+@media(max-width:850px){
+  .menu-toggle{display:flex}
+  .menu{position:absolute;top:100%;left:4%;right:4%;flex-direction:column;gap:4px;background:var(--cream);padding:14px;border-radius:25px;box-shadow:0 20px 40px rgba(0,0,0,.15);opacity:0;visibility:hidden;transform:translateY(-12px);transition:.3s}
+  .menu.open{opacity:1;visibility:visible;transform:none}
+  .menu a{font-size:1rem!important;padding:14px 18px!important}
+  nav{position:relative}
+  .stats{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr}
+  h2{font-size:3rem}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}

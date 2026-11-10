@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TAGGY | Reportar mascota</title>
+    <meta name="description" content="TAGGY: collares de identificación para mascotas, reportes de mascotas perdidas, foro y veterinarias aliadas.">
+    <meta name="theme-color" content="#FFF8ED">
+    <link rel="icon" href="taggy-logo.png">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+
+<body>
+
+    <div class="loader" aria-hidden="true"><img src="taggy-logo.png" alt=""></div>
+    <div class="progress"></div>
+
+    <div class="background">
+
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+        <div class="orb orb4"></div>
+
+    </div>
+
+
+    <header>
+
+        <nav>
+
+            <a href="index.html">
+
+                <img src="taggy-logo.png"
+                     class="logo"
+                     alt="TAGGY">
+
+            </a>
+
+
+            <div class="menu">
+
+                <a href="index.html">
+                    Inicio
+                </a>
+                <a href="comprar.html">
+                    Comprar
+                </a>
+
+                <a href="reportar.html" class="active">
+                    Reportar
+                </a>
+
+                <a href="foro.html">
+                    Foro
+                </a>
+
+                <a href="veterinarias.html">
+                    Veterinarias
+                </a>
+
+                <a href="contacto.html">
+                    Contacto
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section class="page-title">
+
+            <span class="tag">
+                01 · REPORTE
+            </span>
+
+            <h1>
+                ¿Tu mascota
+                <span>desapareció?</span>
+            </h1>
+
+            <p>
+                Crea un reporte con los datos básicos para que
+                la comunidad pueda reconocerla y ayudarte a
+                encontrarla.
+            </p>
+
+        </section>
+
+
+        <section class="form-section">
+
+            <div class="form-card">
+
+                <div class="notice">
+
+                    <strong>Importante:</strong>
+
+                    Completa la información de tu mascota
+                    para crear el reporte.
+
+                </div>
+
+
+                <form id="reportForm">
+
+                    <label>
+                        Nombre de la mascota
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Ej. Luna"
+                        required
+                    >
+
+
+                    <label>
+                        Zona donde desapareció
+                    </label>
+
+                    <input
+                        type="text"
+                        name="zone"
+                        placeholder="Ej. Francisco de Montejo"
+                        required
+                    >
+
+
+                    <label>
+                        Descripción
+                    </label>
+
+                    <textarea
+                        name="description"
+                        placeholder="Describe a tu mascota..."
+                        required
+                    ></textarea>
+
+
+                    <label>
+                        Información de contacto
+                    </label>
+
+                    <input
+                        type="text"
+                        name="contact"
+                        placeholder="Teléfono o correo"
+                        required
+                    >
+
+
+                    <button
+                        type="submit"
+                        class="button primary"
+                    >
+                        Publicar reporte
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div class="side-card">
+
+                <div class="animal-box">
+
+                    <img
+                        src="perro_perdido.jpg"
+                        alt="Animalito"
+                    >
+
+                </div>
+
+                <h3>
+                    Ayúdanos a encontrarla.
+                </h3>
+
+            </div>
+
+        </section>
+
+
+        <section class="section reports">
+
+            <div class="section-title">
+
+                <span class="tag">
+                    REPORTES
+                </span>
+
+                <h2>
+                    Mascotas desaparecidas.
+                </h2>
+
+            </div>
+
+            <div id="reportList">
+
+                <div class="empty">
+                    Todavía no hay reportes.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <div class="floating-animal">
+
+        <img
+            src="perro.png"
+            alt=""
+        >
+
+    </div>
+
+
+    <footer>
+    <div>
+        <h2>TAGGY</h2>
+        <p>Una nueva forma de volver a casa.</p>
+    </div>
+    <div>
+        <h4>Explora</h4>
+        <a href="comprar.html">Comprar</a>
+        <a href="reportar.html">Reportar mascota</a>
+        <a href="foro.html">Foro</a>
+    </div>
+    <div>
+        <h4>Ayuda</h4>
+        <a href="veterinarias.html">Veterinarias</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="carrito.html">Mi carrito</a>
+    </div>
+    <div class="footer-bottom">© 2026 TAGGY · Proyecto académico · Diseño Multimedia</div>
+</footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TAGGY | Foro</title>
+    <meta name="description" content="TAGGY: collares de identificación para mascotas, reportes de mascotas perdidas, foro y veterinarias aliadas.">
+    <meta name="theme-color" content="#FFF8ED">
+    <link rel="icon" href="taggy-logo.png">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+
+<body>
+
+    <div class="loader" aria-hidden="true"><img src="taggy-logo.png" alt=""></div>
+    <div class="progress"></div>
+
+    <div class="background">
+
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+        <div class="orb orb4"></div>
+
+    </div>
+
+
+    <header>
+
+        <nav>
+
+            <a href="index.html">
+
+                <img
+                    src="taggy-logo.png"
+                    class="logo"
+                    alt="TAGGY"
+                >
+
+            </a>
+
+
+            <div class="menu">
+
+                <a href="index.html">
+                    Inicio
+                </a>
+                <a href="comprar.html">
+                    Comprar
+                </a>
+
+                <a href="reportar.html">
+                    Reportar
+                </a>
+
+                <a href="foro.html" class="active">
+                    Foro
+                </a>
+
+                <a href="veterinarias.html">
+                    Veterinarias
+                </a>
+
+                <a href="contacto.html">
+                    Contacto
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section class="page-title">
+
+            <span class="tag">
+                02 · COMUNIDAD
+            </span>
+
+            <h1>
+                Foro
+                <span>TAGGY</span>
+            </h1>
+
+            <p>
+                Un espacio para compartir preguntas, consejos
+                y experiencias relacionadas con nuestras mascotas.
+            </p>
+
+        </section>
+
+
+        <section class="form-section">
+
+
+            <div class="form-card">
+
+                <span class="tag">
+                    NUEVA PREGUNTA
+                </span>
+
+
+                <form id="forumForm">
+
+
+                    <label>
+                        Tema
+                    </label>
+
+                    <select name="topic" required>
+
+                        <option value="">
+                            Selecciona un tema
+                        </option>
+
+                        <option>
+                            Identificación
+                        </option>
+
+                        <option>
+                            Mascotas perdidas
+                        </option>
+
+                        <option>
+                            Cuidados
+                        </option>
+
+                        <option>
+                            TAGGY
+                        </option>
+
+                    </select>
+
+
+                    <label>
+                        Título
+                    </label>
+
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder="¿Cómo puedo registrar a mi mascota?"
+                        required
+                    >
+
+
+                    <label>
+                        Pregunta
+                    </label>
+
+                    <textarea
+                        name="body"
+                        placeholder="Escribe tu pregunta..."
+                        required
+                    ></textarea>
+
+
+                    <label>
+                        Tu nombre
+                    </label>
+
+                    <input
+                        type="text"
+                        name="author"
+                        placeholder="Opcional"
+                    >
+
+
+                    <button
+                        type="submit"
+                        class="button primary"
+                    >
+                        Publicar pregunta
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div class="side-card">
+
+                <div class="animal-box">
+
+                    <img
+                        src="ejemplo.jpg"
+                        alt="Animalito"
+                    >
+
+                </div>
+
+                <h3>
+                    Una comunidad que ayuda.
+                </h3>
+
+                <p>
+                    Aquí los usuarios podrán compartir dudas,
+                    recomendaciones y experiencias.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <span class="tag">
+                    COMUNIDAD
+                </span>
+
+                <h2>
+                    Preguntas recientes.
+                </h2>
+
+            </div>
+
+
+            <div id="forumList">
+
+                <div class="empty">
+                    Todavía no hay preguntas.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <div class="floating-animal">
+
+        <img
+            src="gato.png"
+            alt=""
+        >
+
+    </div>
+
+
+    <footer>
+    <div>
+        <h2>TAGGY</h2>
+        <p>Una nueva forma de volver a casa.</p>
+    </div>
+    <div>
+        <h4>Explora</h4>
+        <a href="comprar.html">Comprar</a>
+        <a href="reportar.html">Reportar mascota</a>
+        <a href="foro.html">Foro</a>
+    </div>
+    <div>
+        <h4>Ayuda</h4>
+        <a href="veterinarias.html">Veterinarias</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="carrito.html">Mi carrito</a>
+    </div>
+    <div class="footer-bottom">© 2026 TAGGY · Proyecto académico · Diseño Multimedia</div>
+</footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

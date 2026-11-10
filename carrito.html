@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TAGGY | Mi carrito</title>
+    <meta name="description" content="TAGGY: collares de identificación para mascotas, reportes de mascotas perdidas, foro y veterinarias aliadas.">
+    <meta name="theme-color" content="#FFF8ED">
+    <link rel="icon" href="taggy-logo.png">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+
+<body>
+
+    <div class="loader" aria-hidden="true"><img src="taggy-logo.png" alt=""></div>
+    <div class="progress"></div>
+
+    <!-- FONDO -->
+
+    <div class="background">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+        <div class="orb orb4"></div>
+    </div>
+
+
+    <!-- MENÚ -->
+
+    <header>
+
+        <nav>
+
+            <a href="index.html">
+
+                <img
+                    src="taggy-logo.png"
+                    class="logo"
+                    alt="TAGGY"
+                >
+
+            </a>
+
+
+            <div class="menu">
+
+                <a href="index.html">
+                    Inicio
+                </a>
+
+                <a href="comprar.html">
+                    Comprar
+                </a>
+
+                <a href="reportar.html">
+                    Reportar
+                </a>
+
+                <a href="foro.html">
+                    Foro
+                </a>
+
+                <a href="veterinarias.html">
+                    Veterinarias
+                </a>
+
+                <a href="contacto.html">
+                    Contacto
+                </a>
+
+                <a href="carrito.html" class="active">
+                    🛒 <span id="cartCount">0</span>
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- TÍTULO -->
+
+        <section class="page-title">
+
+            <span class="tag">
+                TU PEDIDO
+            </span>
+
+            <h1>
+                Mi
+                <span>carrito.</span>
+            </h1>
+
+            <p>
+                Revisa tus productos y personaliza el collar
+                antes de terminar tu pedido.
+            </p>
+
+        </section>
+
+
+        <!-- CARRITO -->
+
+        <section class="cart-layout">
+
+
+            <!-- PRODUCTOS -->
+
+            <div>
+
+                <div
+                    id="cartItems"
+                    class="cart-items"
+                >
+                </div>
+
+
+                <a
+                    href="comprar.html"
+                    class="continue-shopping"
+                >
+                    ← Seguir comprando
+                </a>
+
+            </div>
+
+
+            <!-- RESUMEN -->
+
+            <div class="cart-summary">
+
+                <span class="tag">
+                    RESUMEN
+                </span>
+
+                <h3>
+                    Tu pedido
+                </h3>
+
+
+                <div class="summary-line">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="cartSubtotal">
+                        $0 MXN
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>
+                        Envío
+                    </span>
+
+                    <strong>
+                        Gratis
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="cartTotal">
+                        $0 MXN
+                    </strong>
+
+                </div>
+
+
+                <a
+                    href="#checkout"
+                    class="button primary checkout-button"
+                >
+                    Personalizar y comprar
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHECKOUT -->
+
+        <section
+            class="section"
+            id="checkout"
+        >
+
+            <div class="checkout-title">
+
+                <span class="tag">
+                    CASI LISTO
+                </span>
+
+                <h2>
+                    Personaliza su TAGGY.
+                </h2>
+
+                <p>
+                    Completa los datos de tu mascota y la
+                    información para recibir tu pedido.
+                </p>
+
+            </div>
+
+
+            <form id="checkoutForm">
+
+
+                <div class="checkout-grid">
+
+
+                    <!-- PERSONALIZACIÓN -->
+
+                    <div class="checkout-card">
+
+                        <span class="tag">
+                            01 · MASCOTA
+                        </span>
+
+                        <h3>
+                            Personalización
+                        </h3>
+
+
+                        <label>
+                            Nombre de tu mascota
+                        </label>
+
+                        <input
+                            type="text"
+                            id="petName"
+                            name="petName"
+                            placeholder="Ej. Luna"
+                            maxlength="15"
+                            required
+                        >
+
+
+                        <label>
+                            Talla del collar
+                        </label>
+
+                        <select
+                            id="collarSize"
+                            name="collarSize"
+                            required
+                        >
+
+                            <option value="">
+                                Selecciona una talla
+                            </option>
+
+                            <option value="CH">
+                                CH · Pequeño
+                            </option>
+
+                            <option value="M">
+                                M · Mediano
+                            </option>
+
+                            <option value="G">
+                                G · Grande
+                            </option>
+
+                        </select>
+
+
+                        <label>
+                            Teléfono para TAGGY
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="tagPhone"
+                            name="tagPhone"
+                            placeholder="999 000 0000"
+                            required
+                        >
+
+
+                        <label>
+                            Color del texto
+                        </label>
+
+                        <select
+                            id="textColor"
+                            name="textColor"
+                            required
+                        >
+
+                            <option value="">
+                                Selecciona
+                            </option>
+
+                            <option value="Negro">
+                                Negro
+                            </option>
+
+                            <option value="Blanco">
+                                Blanco
+                            </option>
+
+                            <option value="Naranja">
+                                Naranja
+                            </option>
+
+                        </select>
+
+
+                        <label>
+                            Indicaciones especiales
+                        </label>
+
+                        <textarea
+                            id="customNotes"
+                            name="customNotes"
+                            placeholder="¿Quieres agregar alguna indicación?"
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- DATOS DEL CLIENTE -->
+
+                    <div class="checkout-card">
+
+                        <span class="tag">
+                            02 · CONTACTO
+                        </span>
+
+                        <h3>
+                            Tus datos
+                        </h3>
+
+
+                        <label>
+                            Nombre completo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerName"
+                            name="customerName"
+                            placeholder="Tu nombre"
+                            required
+                        >
+
+
+                        <label>
+                            Correo electrónico
+                        </label>
+
+                        <input
+                            type="email"
+                            id="customerEmail"
+                            name="customerEmail"
+                            placeholder="tu@correo.com"
+                            required
+                        >
+
+
+                        <label>
+                            Teléfono
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            name="customerPhone"
+                            placeholder="999 000 0000"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DIRECCIÓN -->
+
+                    <div class="checkout-card">
+
+                        <span class="tag">
+                            03 · ENVÍO
+                        </span>
+
+                        <h3>
+                            Dirección
+                        </h3>
+
+
+                        <label>
+                            Calle
+                        </label>
+
+                        <input
+                            type="text"
+                            id="street"
+                            name="street"
+                            placeholder="Nombre de la calle"
+                            required
+                        >
+
+
+                        <label>
+                            Número
+                        </label>
+
+                        <input
+                            type="text"
+                            id="houseNumber"
+                            name="houseNumber"
+                            placeholder="123"
+                            required
+                        >
+
+
+                        <label>
+                            Colonia
+                        </label>
+
+                        <input
+                            type="text"
+                            id="neighborhood"
+                            name="neighborhood"
+                            placeholder="Tu colonia"
+                            required
+                        >
+
+
+                        <label>
+                            Código postal
+                        </label>
+
+                        <input
+                            type="text"
+                            id="zipCode"
+                            name="zipCode"
+                            placeholder="97000"
+                            maxlength="5"
+                            required
+                        >
+
+
+                        <label>
+                            Ciudad
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            placeholder="Ciudad"
+                            required
+                        >
+
+
+                        <label>
+                            Estado
+                        </label>
+
+                        <input
+                            type="text"
+                            id="state"
+                            name="state"
+                            placeholder="Estado"
+                            required
+                        >
+
+
+                        <label>
+                            Referencias
+                        </label>
+
+                        <textarea
+                            id="references"
+                            name="references"
+                            placeholder="Ej. Casa blanca con portón negro..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONFIRMACIÓN -->
+
+                <div class="order-confirmation">
+
+                    <div>
+
+                        <span class="tag">
+                            FINALIZAR
+                        </span>
+
+                        <h3>
+                            Confirma tu pedido.
+                        </h3>
+
+                        <p>
+                            Revisa que todos tus datos sean correctos
+                            antes de continuar.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="button primary"
+                    >
+                        Confirmar pedido ♡
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- MENSAJE DE COMPRA -->
+
+            <div
+                id="purchaseSuccess"
+                class="purchase-success"
+            >
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <span class="tag">
+                    PEDIDO RECIBIDO
+                </span>
+
+                <h2>
+                    ¡Gracias por elegir TAGGY!
+                </h2>
+
+                <p>
+                    Tu número de pedido es
+                    <strong id="orderNumber"></strong>.
+                </p>
+
+                <p>
+                    Hemos registrado tu información.
+                    Pronto recibirás noticias sobre tu pedido.
+                </p>
+
+                <a
+                    href="index.html"
+                    class="button primary"
+                >
+                    Volver al inicio
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+    <div>
+        <h2>TAGGY</h2>
+        <p>Una nueva forma de volver a casa.</p>
+    </div>
+    <div>
+        <h4>Explora</h4>
+        <a href="comprar.html">Comprar</a>
+        <a href="reportar.html">Reportar mascota</a>
+        <a href="foro.html">Foro</a>
+    </div>
+    <div>
+        <h4>Ayuda</h4>
+        <a href="veterinarias.html">Veterinarias</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="carrito.html">Mi carrito</a>
+    </div>
+    <div class="footer-bottom">© 2026 TAGGY · Proyecto académico · Diseño Multimedia</div>
+</footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
