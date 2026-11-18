@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAGGY | Mascota encontrada</title>
+<meta name="theme-color" content="#FFF8ED">
+<link rel="icon" href="taggy-logo.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--cream:#FFF8ED;--orange:#EF8A27;--deep:#B85C14;--yellow:#F7C957;--sage:#86A79B;--blue:#9BC3CE;--coral:#D9826B;--black:#202020}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+body{font-family:"DM Sans",sans-serif;color:var(--black);background:#f1e4cf;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 12% 15%,#F7C957 0,transparent 28%),radial-gradient(circle at 90% 30%,#9BC3CE 0,transparent 26%),radial-gradient(circle at 40% 100%,#F3A18C 0,transparent 30%)}
+h1,h2,h3,.b{font-family:"Baloo 2",sans-serif}
+.app{max-width:430px;margin:auto;min-height:100vh;background:var(--cream);box-shadow:0 0 70px rgba(0,0,0,.18);padding-bottom:30px;overflow:hidden}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 20px}.top img{height:38px}
+.tag{display:inline-block;background:var(--yellow);padding:6px 12px;border-radius:30px;font-size:.68rem;font-weight:800;letter-spacing:.04em}
+.sos{background:var(--coral);color:#fff;text-align:center;padding:14px;font:800 1.25rem "Baloo 2";letter-spacing:.03em;animation:blink 1.2s ease-in-out infinite}
+@keyframes blink{50%{background:#C96A52}}
+.wrap>*{animation:up .6s cubic-bezier(.2,.7,.2,1) both}.wrap>*:nth-child(2){animation-delay:.08s}.wrap>*:nth-child(3){animation-delay:.16s}.wrap>*:nth-child(4){animation-delay:.24s}.wrap>*:nth-child(5){animation-delay:.32s}.wrap>*:nth-child(6){animation-delay:.4s}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.wrap{padding:16px 18px}
+.card{background:#fff;border-radius:28px;padding:18px;margin-bottom:14px;box-shadow:0 12px 30px rgba(0,0,0,.07)}
+.hero{text-align:center}
+.pic{position:relative;border-radius:30px;overflow:hidden;aspect-ratio:1;background:linear-gradient(140deg,var(--blue),var(--sage));display:grid;place-items:center}
+.pic img{width:100%;height:100%;object-fit:cover;object-position:center 92%}.em{font-size:7rem;animation:hop 1.6s ease-in-out infinite}
+@keyframes hop{50%{transform:translateY(-10px)}}
+.pic::after{content:"";position:absolute;inset:0;border-radius:30px;border:4px solid var(--coral);animation:ring 1.6s ease-out infinite;pointer-events:none}
+@keyframes ring{0%{opacity:.9}100%{opacity:0;transform:scale(1.04)}}
+.chip{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:#fff;padding:8px 16px;border-radius:30px;font-weight:800;font-size:.72rem;white-space:nowrap;box-shadow:0 8px 20px rgba(0,0,0,.2);z-index:2}
+.chip i{color:var(--coral);font-style:normal;animation:blink2 1s infinite}@keyframes blink2{50%{opacity:.2}}
+.hero h1{font-size:3rem;line-height:1;margin-top:14px}.hero small{display:block;opacity:.65;font-weight:600;margin:4px 0 10px}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.chips span{padding:7px 12px;border-radius:20px;font-size:.75rem;font-weight:800;background:var(--blue)}.chips span.o{background:#FCE8CC}
+.msg{background:#FCE8CC;border-radius:22px;padding:16px;margin-top:14px;text-align:left;font-size:.92rem;line-height:1.5;display:flex;gap:10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:17px;border-radius:30px;border:1.5px solid var(--black);font:800 1.05rem "DM Sans";cursor:pointer;margin-top:10px;text-decoration:none;color:var(--black);background:#fff;transition:.2s}
+.btn:active{transform:scale(.96)}.btn.call{background:var(--deep);border-color:var(--deep);color:#fff;font-size:1.2rem;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(184,92,20,.5)}70%{box-shadow:0 0 0 16px rgba(184,92,20,0)}100%{box-shadow:0 0 0 0 rgba(184,92,20,0)}}
+.btn.wa{background:#2f6b4f;border-color:#2f6b4f;color:#fff}.btn.loc{background:var(--yellow);border-color:var(--yellow)}
+h3{font-size:1.35rem;margin-bottom:12px}
+.lab{font-size:.68rem;font-weight:800;letter-spacing:.06em;opacity:.55}
+.box{background:var(--cream);border-radius:16px;padding:12px 14px;margin-bottom:8px;line-height:1.45}
+.ph{display:flex;align-items:center;justify-content:space-between;gap:10px}.ph a{width:44px;height:44px;border-radius:50%;background:var(--orange);display:grid;place-items:center;text-decoration:none;font-size:1.1rem;flex:none}
+.al{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}.al span{padding:8px 12px;border-radius:20px;font-size:.78rem;font-weight:800;background:#FBE3DD;color:#9b3a24}.al span.ok{background:#DDEBE5;color:#2f6b4f}
+.tips{counter-reset:t;list-style:none;padding:0}.tips li{counter-increment:t;display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;font-size:.9rem;line-height:1.45}
+.tips li::before{content:counter(t);flex:none;width:28px;height:28px;border-radius:50%;background:var(--orange);color:#fff;font:800 .9rem "Baloo 2";display:grid;place-items:center}
+.more{display:flex;justify-content:space-between;align-items:center;background:var(--blue);border-radius:28px;padding:22px 20px;text-decoration:none;color:inherit;font:800 1.15rem "Baloo 2"}
+.foot{text-align:center;font-size:.78rem;opacity:.6;padding:6px 20px}
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,150px);background:var(--black);color:#fff;padding:14px 22px;border-radius:30px;font-weight:700;z-index:99;transition:transform .5s cubic-bezier(.2,1.4,.4,1)}.toast.on{transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+.rw{background:var(--yellow)}.rw strong{font-size:1.2rem}
+.lnk{font-weight:800;font-size:.85rem;color:var(--deep);text-decoration:none}
+.btn.or{background:var(--orange);border-color:var(--orange)}
+#avForm input,#avForm textarea{width:100%;padding:13px 14px;border-radius:15px;border:1.5px solid rgba(32,32,32,.12);background:var(--cream);font:inherit;outline:none;margin-bottom:8px}
+#avForm input:focus,#avForm textarea:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(239,138,39,.18)}#avForm textarea{min-height:76px;resize:vertical}
+.cm{display:flex;gap:12px;padding:14px 0;border-bottom:1px dashed rgba(0,0,0,.14);animation:up .5s both}.cm:last-child{border:0}
+.avt{flex:none;width:40px;height:40px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font:800 1.1rem "Baloo 2"}
+.cm p{font-size:.9rem;line-height:1.45;margin:3px 0 6px}.cm small{opacity:.6}.s{font-size:.85rem;opacity:.75;margin:-4px 0 12px;line-height:1.4}
+.al span.diet{background:#FCE8CC;color:#8a5a14}.al span.oth{background:#E8E3F4;color:#4b3f7a}.al span.chipm{background:#DCEBF0;color:#2d6577}.an{font-size:.84rem;line-height:1.4;margin:0 0 12px 6px;opacity:.85}
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+<div class="toast" id="toast"></div>
+<script>
+const WEB="https://vale95uicab.github.io/Taggy/";
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+/* ==========================================================
+   EDITA AQUÍ LOS DATOS DE LA MASCOTA (lo que ve quien escanea)
+   n=nombre  b=raza  a=edad  x=sexo  id=ID del collar  f=foto (archivo)  i=emoji si no hay foto
+   o=dueño  t=teléfono principal  u=teléfono secundario  z=zona habitual  r=referencia
+   al=alertas médicas (usa "Título: anotación")  nt=nota  mc=microchip (1 sí / 0 no)
+   rw=recompensa  lz=visto por última vez (lugar)  ld=fecha y hora (AAAA-MM-DDTHH:MM)
+========================================================== */
+let D={n:"Catalino",b:"Shih Tzu",a:"1 año",x:"Macho esterilizado",id:"#TG-9204",f:"catalino.jpg",i:"🐶",o:"Valentina Palomino",t:"(999) 123-4567",u:"(999) 987-6543",z:"Fracc. Los Héroes, Mérida, Yucatán",r:"Hospital IMSS cercano",al:["Alergia a la penicilina: reacción grave, avisar al veterinario","Dieta especial gastrointestinal: solo alimento indicado por su veterinario"],nt:"No ofrecer alimentos con harinas ni golosinas artificiales. Es amigable con niños y otros perros.",mc:1,rw:"$1,000 MXN",ld:"2026-11-13T17:30",lz:"Parque de Fracc. Los Héroes, Mérida"};
+try{const m=location.hash.match(/d=([^&]+)/);if(m)D={...D,rw:"",ld:"",lz:D.z,...JSON.parse(decodeURIComponent(escape(atob(m[1].replace(/-/g,"+").replace(/_/g,"/")))))}}catch(e){}
+const dg=s=>String(s||"").replace(/\D/g,""),full=s=>{const d=dg(s);return d.length==10?"52"+d:d};
+let tt;const toast=m=>{const e=document.getElementById("toast");e.textContent=m;e.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("on"),3000)};
+const msg=l=>`Hola, encontré a ${D.n} 🐾 (collar TAGGY ${D.id}).`+(l?` Estoy aquí: https://maps.google.com/?q=${l}`:"");
+const wa=l=>location.href=`https://wa.me/${full(D.t)}?text=${encodeURIComponent(msg(l))}`;
+function share(){toast("Obteniendo tu ubicación…");if(!navigator.geolocation)return wa();navigator.geolocation.getCurrentPosition(p=>wa(p.coords.latitude+","+p.coords.longitude),()=>wa(),{timeout:8000})}
+const ld=(()=>{if(!D.ld)return"";const d=new Date(D.ld);return isNaN(d)?"":d.toLocaleString("es-MX",{dateStyle:"medium",timeStyle:"short"})})();
+const kind=t=>/alerg/i.test(t)?"":/dieta|aliment|comida/i.test(t)?"diet":"oth";
+const alRows=(D.al||[]).map(a=>{const [t,...r]=String(a).split(":"),n=r.join(":").trim();return `<div class="al" style="margin-bottom:4px"><span class="${kind(t)}">${/alerg/i.test(t)?"⚠":"●"} ${esc(t.trim())}</span></div>${n?`<div class="an">${esc(n)}</div>`:""}`}).join("");
+const pic=D.f?`<img src="${esc(D.f)}" alt="${esc(D.n)}" onerror="this.outerHTML='<div class=em>${esc(D.i||"🐶")}</div>'">`:`<div class="em">${esc(D.i||"🐶")}</div>`;
+const phone=(l,n)=>n?`<div class="box ph"><div><div class="lab">${l}</div><strong>+52 ${esc(n)}</strong></div><a href="tel:+${full(n)}" aria-label="Llamar">📞</a></div>`:"";
+document.getElementById("app").innerHTML=`
+<div class="sos">🚨 ¡ESTOY PERDIDO!</div>
+<div class="top"><img src="taggy-logo.png" alt="TAGGY"><span class="tag">ID: ${esc(D.id)}</span></div>
+<div class="wrap">
+ <div class="card hero"><div class="pic">${pic}<span class="chip"><i>●</i> PERDIDO · AYÚDAME A VOLVER A CASA</span></div>
+  <h1>${esc(D.n)} 🐾</h1><small>${esc(D.b)} · ${esc(D.a)}</small>
+  <div class="chips"><span>${esc(D.x)}</span><span class="o">🛡 Collar TAGGY</span></div>
+  <div class="msg"><span>♡</span><span>¡Hola! Si encontraste a <strong>${esc(D.n)}</strong> fuera de casa, por favor comunícate con su familia de inmediato.</span></div></div>
+ <div><a class="btn call" href="tel:+${full(D.t)}">📞 Llamar al dueño ahora</a>
+ <a class="btn wa" href="https://wa.me/${full(D.t)}?text=${encodeURIComponent(msg())}">💬 Enviar WhatsApp</a>
+ <button class="btn loc" onclick="share()">📍 Avisar dónde lo encontré</button></div>
+ <div class="card" style="margin-top:14px"><span class="tag" style="background:var(--coral);color:#fff">REPORTE DE PÉRDIDA</span>
+  <div class="box rw" style="margin-top:12px"><div class="lab">💰 RECOMPENSA</div><strong>${D.rw?esc(D.rw):"El dueño no indicó recompensa"}</strong></div>
+  <div class="box"><div class="lab">📍 VISTO POR ÚLTIMA VEZ</div><strong>${esc(D.lz||D.z)}</strong>${ld?`<br><small>🕒 ${esc(ld)}</small>`:""}<br><a class="lnk" target="_blank" rel="noopener" href="https://maps.google.com/?q=${encodeURIComponent(D.lz||D.z)}">Ver en el mapa →</a></div></div>
+ <div class="card"><h3>💬 ¿Alguien lo ha visto? <small id="avCount" style="font:700 .8rem 'DM Sans';opacity:.6"></small></h3><p class="s">Si viste a ${esc(D.n)}, cuéntanos dónde. Ayudas a su familia a encontrarlo.</p>
+  <form id="avForm" onsubmit="addAv(event,false)"><input name="z" required placeholder="📍 ¿Dónde lo viste?"><textarea name="c" placeholder="Cuéntanos qué viste..."></textarea><input name="n" placeholder="Tu nombre (opcional)"><button class="btn or">Publicar avistamiento</button><button type="button" class="btn wa" onclick="addAv(event,true)">Publicar y avisar al dueño por WhatsApp</button></form>
+  <div id="avList" style="margin-top:14px"></div></div>
+ <div class="card"><h3>Información del dueño</h3>
+  <div class="box"><div class="lab">CONTACTO RESPONSABLE</div><strong>${esc(D.o)}</strong></div>
+  <div class="box"><div class="lab">📍 ZONA HABITUAL</div>${esc(D.z)}${D.r?`<br><small style="opacity:.7">Referencia: ${esc(D.r)}</small>`:""}</div>
+  ${phone("TELÉFONO PRINCIPAL",D.t)}${phone("TELÉFONO SECUNDARIO",D.u)}</div>
+ <div class="card"><h3>🩺 Cuidados y alertas médicas</h3>${alRows||`<div class="box">El dueño no registró condiciones médicas.</div>`}
+  ${D.mc?`<div class="al"><span class="chipm">✔ Microchip verificado</span></div>`:""}
+  ${D.nt?`<div class="box"><strong>Nota:</strong> ${esc(D.nt)}</div>`:""}</div>
+ <div class="card"><h3>¿Qué hago si lo encontré?</h3><ol class="tips"><li>Acércate con calma y háblale suave. Si está asustado, dale espacio.</li><li>Llama o escribe a su familia con los botones de arriba.</li><li>Si puedes, ofrécele agua y quédate con él. Revisa sus alertas antes de darle comida.</li></ol></div>
+ <a class="more" href="${WEB}">Más información de TAGGY <span style="color:var(--deep)">→</span></a>
+</div>
+<div class="foot">TAGGY · Una nueva forma de volver a casa<br><a href="index.html" style="color:#B85C14;font-weight:800">← Volver a la página de TAGGY</a></div>`;
+
+/* ===== Foro de avistamientos (comentarios de ejemplo; los nuevos se guardan en este dispositivo) ===== */
+const AVK="taggyAv_"+D.id;
+const SEED=[{n:"Mariana R.",z:"Parque de Los Héroes, Mérida",c:`Vi a ${D.n} hace rato caminando solito, sin correa. Se veía asustado.`,w:"hace 2 h"},{n:"Luis P.",z:"Periférico, Mérida",c:"Creo que cruzó hacia una calle privada. Intenté seguirlo pero lo perdí de vista.",w:"hace 5 h"},{n:"Ana G.",z:"Colonia Los Héroes",c:"Ya lo compartí en el grupo de vecinos. Avisen si lo encuentran 🐾",w:"ayer"}];
+let mine=[];try{mine=JSON.parse(localStorage.getItem(AVK))||[]}catch(e){}
+function renderAv(){const all=[...mine,...SEED];document.getElementById("avCount").textContent="· "+all.length+" avistamientos";
+ document.getElementById("avList").innerHTML=all.map(x=>`<div class="cm"><div class="avt">${esc((x.n||"A")[0].toUpperCase())}</div><div><strong>${esc(x.n||"Alguien")}</strong> <small>· ${esc(x.w)}</small><p>${esc(x.c||"Lo vi por aquí.")}</p><a class="lnk" target="_blank" rel="noopener" href="https://maps.google.com/?q=${encodeURIComponent(x.z)}">📍 ${esc(x.z)}</a></div></div>`).join("")}
+function addAv(e,notify){e.preventDefault();const f=document.getElementById("avForm");if(!f.reportValidity())return;
+ const z=f.z.value.trim(),c=f.c.value.trim(),n=f.n.value.trim();mine.unshift({n,z,c,w:"ahora"});
+ try{localStorage.setItem(AVK,JSON.stringify(mine))}catch(x){}renderAv();f.reset();toast("Avistamiento publicado 🐾");
+ if(notify)setTimeout(()=>location.href=`https://wa.me/${full(D.t)}?text=${encodeURIComponent(`Hola, vi a ${D.n} 🐾 en: ${z}.${c?" "+c:""}`)}`,700)}
+renderAv();
+</script>
+</body>
+</html>

@@ -1,280 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TAGGY | Foro</title>
-    <meta name="description" content="TAGGY: collares de identificación para mascotas, reportes de mascotas perdidas, foro y veterinarias aliadas.">
+    <meta name="description" content="TAGGY: placa de identificación con NFC para el collar de tu mascota, reportes de mascotas perdidas, foro y veterinarias aliadas.">
     <meta name="theme-color" content="#FFF8ED">
     <link rel="icon" href="taggy-logo.png">
-
     <link rel="stylesheet" href="styles.css">
-
 </head>
-
-
 <body>
-
-    <div class="loader" aria-hidden="true"><img src="taggy-logo.png" alt=""></div>
+    <div class="loader" aria-hidden="true"><div><img src="taggy-logo.png" alt=""><p>📲 Acerca tu celular a la placa</p></div></div>
     <div class="progress"></div>
-
-    <div class="background">
-
-        <div class="orb orb1"></div>
-        <div class="orb orb2"></div>
-        <div class="orb orb3"></div>
-        <div class="orb orb4"></div>
-
-    </div>
-
-
-    <header>
-
-        <nav>
-
-            <a href="index.html">
-
-                <img
-                    src="taggy-logo.png"
-                    class="logo"
-                    alt="TAGGY"
-                >
-
-            </a>
-
-
-            <div class="menu">
-
-                <a href="index.html">
-                    Inicio
-                </a>
-                <a href="comprar.html">
-                    Comprar
-                </a>
-
-                <a href="reportar.html">
-                    Reportar
-                </a>
-
-                <a href="foro.html" class="active">
-                    Foro
-                </a>
-
-                <a href="veterinarias.html">
-                    Veterinarias
-                </a>
-
-                <a href="contacto.html">
-                    Contacto
-                </a>
-
-            </div>
-
-        </nav>
-
-    </header>
-
-
+    <div class="background"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div><div class="orb orb4"></div></div>
+    <header><nav>
+        <a href="index.html"><img src="taggy-logo.png" class="logo" alt="TAGGY"></a>
+        <div class="menu"><a href="index.html">Inicio</a><a href="comprar.html">Comprar</a><a href="reportar.html">Reportar</a><a href="perdidas.html">Mascotas perdidas</a><a href="foro.html" class="active">Foro</a><a href="veterinarias.html">Veterinarias</a><a href="contacto.html">Contacto</a><a href="carrito.html" class="cart-menu">🛒 <span id="cartCount">0</span></a></div>
+    </nav></header>
     <main>
-
-        <section class="page-title">
-
-            <span class="tag">
-                02 · COMUNIDAD
-            </span>
-
-            <h1>
-                Foro
-                <span>TAGGY</span>
-            </h1>
-
-            <p>
-                Un espacio para compartir preguntas, consejos
-                y experiencias relacionadas con nuestras mascotas.
-            </p>
-
-        </section>
-
-
+<section class="page-title"><span class="tag">03 · COMUNIDAD</span><h1>Foro <span>TAGGY</span></h1><p>Un espacio para compartir preguntas, consejos y experiencias sobre el cuidado y la identificación de nuestras mascotas.</p></section>
         <section class="form-section">
-
-
             <div class="form-card">
-
-                <span class="tag">
-                    NUEVA PREGUNTA
-                </span>
-
-
+                <span class="tag">NUEVA PREGUNTA</span>
                 <form id="forumForm">
-
-
-                    <label>
-                        Tema
-                    </label>
-
-                    <select name="topic" required>
-
-                        <option value="">
-                            Selecciona un tema
-                        </option>
-
-                        <option>
-                            Identificación
-                        </option>
-
-                        <option>
-                            Mascotas perdidas
-                        </option>
-
-                        <option>
-                            Cuidados
-                        </option>
-
-                        <option>
-                            TAGGY
-                        </option>
-
-                    </select>
-
-
-                    <label>
-                        Título
-                    </label>
-
-                    <input
-                        type="text"
-                        name="title"
-                        placeholder="¿Cómo puedo registrar a mi mascota?"
-                        required
-                    >
-
-
-                    <label>
-                        Pregunta
-                    </label>
-
-                    <textarea
-                        name="body"
-                        placeholder="Escribe tu pregunta..."
-                        required
-                    ></textarea>
-
-
-                    <label>
-                        Tu nombre
-                    </label>
-
-                    <input
-                        type="text"
-                        name="author"
-                        placeholder="Opcional"
-                    >
-
-
-                    <button
-                        type="submit"
-                        class="button primary"
-                    >
-                        Publicar pregunta
-                    </button>
-
+                    <label>Tema</label>
+                    <select name="topic" required><option value="">Selecciona un tema</option><option>Identificación</option><option>Collares y pedidos</option><option>Cuidados</option><option>TAGGY</option></select>
+                    <label>Título</label>
+                    <input type="text" name="title" placeholder="¿Cómo activo la placa de mi mascota?" required>
+                    <label>Pregunta</label>
+                    <textarea name="body" placeholder="Escribe tu pregunta..." required></textarea>
+                    <label>Tu nombre</label>
+                    <input type="text" name="author" placeholder="Opcional">
+                    <button type="submit" class="button primary">Publicar pregunta</button>
                 </form>
-
             </div>
-
-
             <div class="side-card">
-
-                <div class="animal-box">
-
-                    <img
-                        src="ejemplo.jpg"
-                        alt="Animalito"
-                    >
-
-                </div>
-
-                <h3>
-                    Una comunidad que ayuda.
-                </h3>
-
-                <p>
-                    Aquí los usuarios podrán compartir dudas,
-                    recomendaciones y experiencias.
-                </p>
-
+                <div class="animal-box"><img src="ejemplo.jpg" alt="Mascota con collar"></div>
+                <h3>Una comunidad que ayuda.</h3>
+                <p>Aquí los dueños comparten dudas, consejos y experiencias. Para reportar o ver mascotas perdidas, entra a <a class="card-link" href="reportar.html">Reportar</a> o a <a class="card-link" href="perdidas.html">Mascotas perdidas</a>.</p>
             </div>
-
         </section>
-
-
-        <section class="section">
-
-            <div class="section-title">
-
-                <span class="tag">
-                    COMUNIDAD
-                </span>
-
-                <h2>
-                    Preguntas recientes.
-                </h2>
-
-            </div>
-
-
-            <div id="forumList">
-
-                <div class="empty">
-                    Todavía no hay preguntas.
-                </div>
-
-            </div>
-
+        <section class="section faq-section">
+            <div class="section-title"><span class="tag">COMUNIDAD</span><h2>Preguntas y respuestas.</h2></div>
+            <div class="faq-list" id="forumList"></div>
         </section>
-
     </main>
-
-
-    <div class="floating-animal">
-
-        <img
-            src="gato.png"
-            alt=""
-        >
-
-    </div>
-
-
+    <div class="floating-animal"><img src="gato.png" alt=""></div>
     <footer>
-    <div>
-        <h2>TAGGY</h2>
-        <p>Una nueva forma de volver a casa.</p>
-    </div>
-    <div>
-        <h4>Explora</h4>
-        <a href="comprar.html">Comprar</a>
-        <a href="reportar.html">Reportar mascota</a>
-        <a href="foro.html">Foro</a>
-    </div>
-    <div>
-        <h4>Ayuda</h4>
-        <a href="veterinarias.html">Veterinarias</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="carrito.html">Mi carrito</a>
-    </div>
+    <div><h2>TAGGY</h2><p>Una nueva forma de volver a casa.</p></div>
+    <div><h4>Explora</h4><a href="comprar.html">Comprar</a><a href="instrucciones.html">Instrucciones</a><a href="reportar.html">Reportar</a><a href="perdidas.html">Mascotas perdidas</a></div>
+    <div><h4>Comunidad</h4><a href="foro.html">Foro</a><a href="veterinarias.html">Veterinarias</a><a href="contacto.html">Contacto</a></div>
     <div class="footer-bottom">© 2026 TAGGY · Proyecto académico · Diseño Multimedia</div>
 </footer>
-
-
     <script src="script.js"></script>
-
 </body>
-
 </html>

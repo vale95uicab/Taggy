@@ -43,312 +43,73 @@ document.addEventListener("mousemove", function(event) {
 });
 
 
-/* =================================
-   REPORTAR MASCOTA
-================================= */
 
-const reportForm =
-    document.getElementById("reportForm");
+/* ========================================
+   FUNCIONES COMUNES
+======================================== */
+function escapeHTML(x){const d=document.createElement("div");d.textContent=x||"";return d.innerHTML}
+function resizeImage(file,cb){const r=new FileReader();r.onload=e=>{const i=new Image();i.onload=()=>{const s=Math.min(1,700/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",.8))};i.src=e.target.result};r.readAsDataURL(file)}
+function readList(k){try{return JSON.parse(localStorage.getItem(k))||[]}catch(e){return[]}}
 
-const reportList =
-    document.getElementById("reportList");
-
-
-if (reportForm && reportList) {
-
-
-    function showReports() {
-
-        let reports =
-            JSON.parse(
-                localStorage.getItem("taggyReports")
-            ) || [];
-
-
-        if (reports.length === 0) {
-
-            reportList.innerHTML = `
-                <div class="empty">
-                    Todavía no hay reportes.
-                </div>
-            `;
-
-            return;
-
-        }
-
-
-        reportList.innerHTML = "";
-
-
-        reports.forEach(function(report) {
-
-            let article =
-                document.createElement("article");
-
-
-            article.className =
-                "report";
-
-
-            article.innerHTML = `
-
-                <span class="tag">
-                    MASCOTA DESAPARECIDA
-                </span>
-
-                <h3>
-                    ${esc(report.name)}
-                </h3>
-
-                <p>
-                    <strong>Zona:</strong>
-                    ${esc(report.zone)}
-                </p>
-
-                <p>
-                    ${esc(report.description)}
-                </p>
-
-                <p>
-                    <strong>Contacto:</strong>
-                    ${esc(report.contact)}
-                </p>
-
-            `;
-
-
-            reportList.appendChild(article);
-
-        });
-
-    }
-
-
-    reportForm.addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            const data =
-                new FormData(reportForm);
-
-
-            let reports =
-                JSON.parse(
-                    localStorage.getItem("taggyReports")
-                ) || [];
-
-
-            reports.unshift({
-
-                name:
-                    data.get("name"),
-
-                zone:
-                    data.get("zone"),
-
-                description:
-                    data.get("description"),
-
-                contact:
-                    data.get("contact")
-
-            });
-
-
-            localStorage.setItem(
-                "taggyReports",
-                JSON.stringify(reports)
-            );
-
-
-            reportForm.reset();
-
-
-            showReports();
-
-
-            alert(
-                "¡El reporte fue publicado!"
-            );
-
-        }
-    );
-
-
-    showReports();
-
+/* ========================================
+   REPORTAR MASCOTA (formulario)
+======================================== */
+const reportForm=document.getElementById("reportForm");
+if(reportForm){
+  const pi=document.getElementById("reportPhoto"),pv=document.getElementById("photoPreview");let photo="";
+  pi.addEventListener("change",()=>{const f=pi.files[0];if(!f){photo="";pv.classList.remove("show");return}resizeImage(f,d=>{photo=d;pv.src=d;pv.classList.add("show")})});
+  reportForm.addEventListener("submit",e=>{e.preventDefault();const d=new FormData(reportForm),a=readList("taggyReports");
+    a.unshift({name:d.get("name"),type:d.get("type"),size:d.get("size"),breed:d.get("breed"),desc:d.get("description"),collar:d.get("collar"),taggy:d.get("taggy")?1:0,zone:d.get("zone"),date:d.get("date"),reward:d.get("reward"),contact:d.get("contact"),photo});
+    try{localStorage.setItem("taggyReports",JSON.stringify(a))}catch(x){alert("No hay espacio para guardar la foto. Prueba con una imagen más pequeña.");return}
+    reportForm.reset();pv.classList.remove("show");photo="";document.getElementById("afterReport").classList.add("show");alert("¡El reporte fue publicado!")});
 }
 
+/* ========================================
+   MASCOTAS PERDIDAS (lista)
+======================================== */
+const lostGrid=document.getElementById("lostGrid");
+if(lostGrid){
+  const SIM=[
+   {name:"Catalino",type:"Perro",breed:"Shih Tzu",size:"Chico",desc:"Pelo negro y gris con las patas blancas. Es amigable con niños y otros perros.",collar:"Arnés azul de lunares con placa TAGGY",taggy:1,zone:"Fracc. Los Héroes, Mérida",date:"2026-11-17",reward:"$1,000 MXN",contact:"999 123 4567",photo:"catalino.jpg"},
+   {name:"Nieve",type:"Perro",breed:"",size:"Mediano",desc:"Pelaje blanco y nariz oscura. Es muy tranquila y amigable. Lleva una camiseta rosa.",collar:"Sin collar visible",taggy:0,zone:"Francisco de Montejo, Mérida",date:"2026-11-16",reward:"",contact:"999 000 0000",photo:"perra.png"},
+   {name:"Canela",type:"Perro",breed:"Vizsla",size:"Grande",desc:"Pelo corto color cobre. Es activa y muy cariñosa.",collar:"Collar verde olivo con hebilla dorada",taggy:0,zone:"Itzimná, Mérida",date:"2026-11-15",reward:"$500 MXN",contact:"999 111 1111",photo:"perro_perdido.jpg"},
+   {name:"Misi",type:"Gato",breed:"",size:"Chico",desc:"Gato blanco con manchas. Es tímido y se esconde cuando hay ruido.",collar:"Collar naranja con placa TAGGY",taggy:1,zone:"Centro, Mérida",date:"2026-11-14",reward:"",contact:"999 222 2222",photo:"gato.png"}];
+  const card=r=>{const ph=r.photo?`<img src="${r.photo}" alt="Foto de ${escapeHTML(r.name)}">`:`<div class="noph">${r.type=="Gato"?"🐱":"🐶"}</div>`,
+   chips=[r.type,r.breed,r.size].filter(Boolean).map(x=>`<span>${escapeHTML(x)}</span>`).join("")+(r.taggy?"<span>Placa TAGGY</span>":""),
+   dg=String(r.contact||"").replace(/\D/g,""),c=String(r.contact||""),
+   act=dg.length>=10?`<a class="button primary" href="tel:+52${dg.slice(-10)}">📞 Llamar al dueño</a>`:c.includes("@")?`<a class="button primary" href="mailto:${escapeHTML(c)}">✉ Escribir al dueño</a>`:"",
+   dt=r.date?new Date(r.date+"T12:00").toLocaleDateString("es-MX",{day:"numeric",month:"long"}):"";
+   return `<article class="recent-card"><div class="recent-photo">${ph}<span class="recent-badge">SE BUSCA</span></div><div class="recent-info"><h3>${escapeHTML(r.name)}</h3><div class="chips">${chips}</div><p><strong>Zona:</strong> ${escapeHTML(r.zone)}${dt?" · "+dt:""}</p><p>${escapeHTML(r.desc||r.description)}</p>${r.collar?`<p><strong>Collar:</strong> ${escapeHTML(r.collar)}</p>`:""}${r.reward?`<span class="reward">💰 Recompensa: ${escapeHTML(r.reward)}</span>`:""}<p><strong>Contacto:</strong> ${escapeHTML(c)}</p>${act}</div></article>`};
+  const all=[...readList("taggyReports"),...SIM],q=document.getElementById("lostSearch");
+  function draw(){const v=(q.value||"").toLowerCase(),l=all.filter(r=>[r.name,r.breed,r.zone,r.type].join(" ").toLowerCase().includes(v));
+    lostGrid.innerHTML=l.map(card).join("")||'<div class="empty">No hay mascotas perdidas con esa búsqueda.</div>';
+    document.getElementById("lostCount").textContent=l.length+(l.length==1?" mascota perdida":" mascotas perdidas")}
+  q.addEventListener("input",draw);draw();
+}
 
-/* =================================
+/* ========================================
    FORO
-================================= */
-
-const forumForm =
-    document.getElementById("forumForm");
-
-const forumList =
-    document.getElementById("forumList");
-
-
-if (forumForm && forumList) {
-
-
-    function showPosts() {
-
-        let posts =
-            JSON.parse(
-                localStorage.getItem("taggyForum")
-            ) || [];
-
-
-        if (posts.length === 0) {
-
-            forumList.innerHTML = `
-                <div class="empty">
-                    Todavía no hay preguntas.
-                </div>
-            `;
-
-            return;
-
-        }
-
-
-        forumList.innerHTML = "";
-
-
-        posts.forEach(function(post) {
-
-            let article =
-                document.createElement("article");
-
-
-            article.className =
-                "forum-post";
-
-
-            article.innerHTML = `
-
-                <span class="tag">
-                    ${esc(post.topic)}
-                </span>
-
-                <h3>
-                    ${esc(post.title)}
-                </h3>
-
-                <p>
-                    ${esc(post.body)}
-                </p>
-
-                <small>
-                    Publicado por
-                    ${esc(post.author)}
-                </small>
-
-            `;
-
-
-            forumList.appendChild(article);
-
-        });
-
-    }
-
-
-    forumForm.addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            const data =
-                new FormData(forumForm);
-
-
-            let posts =
-                JSON.parse(
-                    localStorage.getItem("taggyForum")
-                ) || [];
-
-
-            posts.unshift({
-
-                topic:
-                    data.get("topic"),
-
-                title:
-                    data.get("title"),
-
-                body:
-                    data.get("body"),
-
-                author:
-                    data.get("author") ||
-                    "Usuario TAGGY"
-
-            });
-
-
-            localStorage.setItem(
-                "taggyForum",
-                JSON.stringify(posts)
-            );
-
-
-            forumForm.reset();
-
-
-            showPosts();
-
-
-            alert(
-                "¡Tu pregunta fue publicada!"
-            );
-
-        }
-    );
-
-
-    showPosts();
-
+======================================== */
+const forumForm=document.getElementById("forumForm"),forumList=document.getElementById("forumList");
+if(forumForm&&forumList){
+  const FS=[
+   {topic:"TAGGY",title:"¿Qué información lleva mi TAGGY?",body:"Estoy por comprar un collar y quiero saber qué datos se le ponen antes de pedirlo.",author:"Equipo TAGGY",answer:"Al personalizar tu pedido eliges el nombre de tu mascota, el teléfono de contacto y el color del texto. También puedes dejar indicaciones especiales. Revisa bien el teléfono antes de confirmar, porque es el dato que usará quien encuentre a tu mascota para avisarte."},
+   {topic:"Identificación",title:"¿Cómo activo la placa de mi mascota?",body:"Ya recibí mi collar. ¿Qué hago para activar la placa?",author:"Equipo TAGGY",answer:"Entra a Instrucciones y sigue los cinco pasos: vincula la placa, verifica la información, colócala en el collar, ajusta el collar y revisa la placa con frecuencia."},
+   {topic:"Cuidados",title:"¿Cómo sé si el collar le queda bien?",body:"No sé si el collar de mi mascota está muy apretado o muy flojo.",author:"Equipo TAGGY",answer:"Debe quedar cómodo, sin apretar. Si puedes pasar dos dedos entre el collar y el cuello de tu mascota, la medida es correcta."}];
+  const post=p=>`<article class="faq-post"><span class="tag">${escapeHTML(p.topic)}</span><h3>${escapeHTML(p.title)}</h3><p class="faq-question">${escapeHTML(p.body)}</p>${p.answer?`<div class="faq-answer"><strong>${escapeHTML(p.author)}</strong><p>${escapeHTML(p.answer)}</p></div>`:`<small>Publicado por ${escapeHTML(p.author)}</small>`}</article>`;
+  const show=()=>{forumList.innerHTML=[...readList("taggyForum"),...FS].map(post).join("")};
+  forumForm.addEventListener("submit",e=>{e.preventDefault();const d=new FormData(forumForm),a=readList("taggyForum");
+    a.unshift({topic:d.get("topic"),title:d.get("title"),body:d.get("body"),author:d.get("author")||"Usuario TAGGY"});
+    localStorage.setItem("taggyForum",JSON.stringify(a));forumForm.reset();show();alert("¡Tu pregunta fue publicada!")});
+  show();
 }
 
-
-/* =================================
+/* ========================================
    CONTACTO
-================================= */
+======================================== */
+const contactForm=document.getElementById("contactForm");
+if(contactForm)contactForm.addEventListener("submit",e=>{e.preventDefault();contactForm.reset();alert("¡Gracias por contactar a TAGGY!")});
 
-const contactForm =
-    document.getElementById("contactForm");
-
-
-if (contactForm) {
-
-    contactForm.addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            contactForm.reset();
-
-
-            alert(
-                "¡Gracias por contactar a TAGGY!"
-            );
-
-        }
-    );
-
-}
 /* ========================================
    TIENDA TAGGY
 ======================================== */
@@ -875,6 +636,9 @@ updateCartCount();
 
 renderCart();
 
+/* talla del collar según el producto del carrito */
+(function(){const cs=document.getElementById("collarSize");if(!cs)return;const n=getCart().map(i=>i.name).join(" ");cs.value=/Chico/.test(n)?"CH":/Mediano/.test(n)?"M":/Grande/.test(n)?"G":""})();
+
 /* ========================================
    ANIMACIONES PRO
 ======================================== */
@@ -885,7 +649,7 @@ addEventListener('scroll',()=>{
   if(bar){const h=document.documentElement;bar.style.width=(scrollY/(h.scrollHeight-h.clientHeight||1)*100)+'%'}
 },{passive:true});
 
-const sel='.section-title,.page-title>*,.card,.product-card,.vet-card,.form-card,.side-card,.contact-info,.alliance-box,.shop-info,.cart-summary,.checkout-card,.stat,.faq-list details,.cta-band,.marquee';
+const sel='.section-title,.page-title>*,.card,.product-card,.vet-card,.form-card,.side-card,.contact-info,.alliance-box,.shop-info,.cart-summary,.checkout-card,.stat,.faq-post,.cta-band,.marquee,.nfc-section,.recent-card,.mini-phone';
 const io=new IntersectionObserver(es=>es.forEach(e=>{
   if(!e.isIntersecting)return;const el=e.target;el.classList.add('in');io.unobserve(el);
   setTimeout(()=>el.classList.remove('reveal','in'),1300);

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAGGY | Mascotas perdidas</title>
+    <meta name="description" content="TAGGY: placa de identificación con NFC para el collar de tu mascota, reportes de mascotas perdidas, foro y veterinarias aliadas.">
+    <meta name="theme-color" content="#FFF8ED">
+    <link rel="icon" href="taggy-logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="loader" aria-hidden="true"><div><img src="taggy-logo.png" alt=""><p>📲 Acerca tu celular a la placa</p></div></div>
+    <div class="progress"></div>
+    <div class="background"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div><div class="orb orb4"></div></div>
+    <header><nav>
+        <a href="index.html"><img src="taggy-logo.png" class="logo" alt="TAGGY"></a>
+        <div class="menu"><a href="index.html">Inicio</a><a href="comprar.html">Comprar</a><a href="reportar.html">Reportar</a><a href="perdidas.html" class="active">Mascotas perdidas</a><a href="foro.html">Foro</a><a href="veterinarias.html">Veterinarias</a><a href="contacto.html">Contacto</a><a href="carrito.html" class="cart-menu">🛒 <span id="cartCount">0</span></a></div>
+    </nav></header>
+    <main>
+<section class="page-title"><span class="tag">02 · MASCOTAS PERDIDAS</span><h1>Mascotas <span>perdidas.</span></h1><p>Mira las mascotas perdidas. Si viste alguna, contacta a su dueño con un toque.</p></section>
+        <section class="section recent-section">
+            <div class="lost-search">
+                <input type="search" id="lostSearch" placeholder="🔎 Busca por nombre, raza o zona">
+                <a href="reportar.html" class="button primary">Reportar mascota</a>
+            </div>
+            <p id="lostCount" class="lost-count"></p>
+            <div class="recent-grid" id="lostGrid"></div>
+            <p class="lost-note">Los primeros reportes son de ejemplo para el proyecto. Los reportes que publiques en Reportar aparecen aquí.</p>
+        </section>
+    </main>
+    <div class="floating-animal"><img src="perro.png" alt=""></div>
+    <footer>
+    <div><h2>TAGGY</h2><p>Una nueva forma de volver a casa.</p></div>
+    <div><h4>Explora</h4><a href="comprar.html">Comprar</a><a href="instrucciones.html">Instrucciones</a><a href="reportar.html">Reportar</a><a href="perdidas.html">Mascotas perdidas</a></div>
+    <div><h4>Comunidad</h4><a href="foro.html">Foro</a><a href="veterinarias.html">Veterinarias</a><a href="contacto.html">Contacto</a></div>
+    <div class="footer-bottom">© 2026 TAGGY · Proyecto académico · Diseño Multimedia</div>
+</footer>
+    <script src="script.js"></script>
+</body>
+</html>
