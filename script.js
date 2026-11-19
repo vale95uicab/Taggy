@@ -677,9 +677,52 @@ if(matchMedia('(hover:hover)').matches)document.querySelectorAll('.product-card,
 
 /* huellitas al hacer clic */
 addEventListener('click',e=>{
-  if(e.target.closest('a,input,textarea,select'))return;
+  if(e.target.closest('a,input,textarea,select,button,.floating-animal,.fa-bubble'))return;
   const p=document.createElement('span');p.className='paw';p.textContent='🐾';
   p.style.left=e.clientX-12+'px';p.style.top=e.clientY-12+'px';p.style.setProperty('--r',(Math.random()*60-30)+'deg');
   document.body.appendChild(p);setTimeout(()=>p.remove(),1000);
 });
+})();
+
+
+/* ========================================
+   GIGY Y TAMI · AYUDANTES DE TAGGY
+======================================== */
+(function(){
+  const page=location.pathname.split("/").pop()||"index.html";
+  let fa=document.querySelector(".floating-animal");
+  if(!fa){
+    const dog=/comprar|instrucciones|veterinarias|perdidas|reportar/.test(page);
+    fa=document.createElement("div");fa.className="floating-animal";
+    fa.innerHTML='<img src="'+(dog?"perro.png":"gato.png")+'" alt="">';document.body.appendChild(fa);
+  }
+  const img=fa.querySelector("img"),src=img.getAttribute("src"),cat=/gato/.test(src),
+        name=cat?"Gigy":"Tami",emoji=cat?"🐱":"🐶";
+  img.alt=name;
+  fa.setAttribute("role","button");fa.setAttribute("tabindex","0");fa.setAttribute("aria-label","Hablar con "+name);
+  const O=[["🚨","Reportar mi mascota perdida","reportar.html"],["🔎","Ver mascotas perdidas","perdidas.html"],["💬","Ir al foro","foro.html"],["🛒","Comprar un collar","comprar.html"],["📲","Cómo funciona el NFC","index.html#nfc"],["📋","Instrucciones de la placa","instrucciones.html"],["🏥","Veterinarias aliadas","veterinarias.html"],["✉️","Contactar a TAGGY","contacto.html"]]
+    .filter(o=>o[2].includes("#")||o[2]!==page);
+  const b=document.createElement("div");b.className="fa-bubble";b.hidden=true;b.setAttribute("role","dialog");b.setAttribute("aria-label","Ayuda de "+name);
+  b.innerHTML='<div class="fa-head"><img src="'+(cat?"avatar_gato.png":"avatar_perro.png")+'" alt=""><div><b>'+name+'</b><small>Tu ayudante en TAGGY</small></div><button type="button" class="fa-x" aria-label="Cerrar">✕</button></div>'+
+    '<p class="fa-hi">¡Hola! Soy '+name+' '+emoji+'. Dime en qué te ayudo: ¿a dónde quieres ir?</p>'+
+    '<div class="fa-opts">'+O.map(o=>'<a href="'+o[2]+'" data-t="'+o[1]+'"><i>'+o[0]+'</i>'+o[1]+'</a>').join("")+'</div>';
+  document.body.appendChild(b);
+  const hint=document.createElement("div");hint.className="fa-hint";hint.hidden=true;hint.textContent="¡Hola! Soy "+name+" 👋 Tócame";document.body.appendChild(hint);
+  const msg=b.querySelector(".fa-hi"),opts=b.querySelector(".fa-opts");
+  const isOpen=()=>b.classList.contains("on");
+  function open(){hint.hidden=true;b.hidden=false;requestAnimationFrame(()=>b.classList.add("on"));fa.classList.add("talking")}
+  function close(){b.classList.remove("on");fa.classList.remove("talking");setTimeout(()=>{if(!isOpen())b.hidden=true},400)}
+  fa.addEventListener("click",e=>{e.stopPropagation();isOpen()?close():open()});
+  fa.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();fa.click()}});
+  b.querySelector(".fa-x").addEventListener("click",close);
+  document.addEventListener("click",e=>{if(isOpen()&&!b.contains(e.target))close()});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&isOpen())close()});
+  opts.querySelectorAll("a").forEach(a=>a.addEventListener("click",e=>{
+    const href=a.getAttribute("href");
+    if(href.includes("#")&&href.split("#")[0]===page){close();return}
+    e.preventDefault();msg.textContent="¡Vamos! Te llevo a «"+a.dataset.t+"»…";opts.classList.add("wait");fa.classList.add("go");
+    setTimeout(()=>{location.href=href},1000);
+  }));
+  /* saludo discreto, una sola vez por visita */
+  try{if(!sessionStorage.getItem("taggyHint")){setTimeout(()=>{if(!isOpen()){hint.hidden=false;requestAnimationFrame(()=>hint.classList.add("on"));setTimeout(()=>{hint.classList.remove("on");setTimeout(()=>hint.hidden=true,500)},6000)}sessionStorage.setItem("taggyHint","1")},5000)}}catch(e){}
 })();
