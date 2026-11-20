@@ -70,7 +70,6 @@ if(reportForm){
 const lostGrid=document.getElementById("lostGrid");
 if(lostGrid){
   const SIM=[
-   {name:"Catalino",type:"Perro",breed:"Shih Tzu",size:"Chico",desc:"Pelo negro y gris con las patas blancas. Es amigable con niños y otros perros.",collar:"Arnés azul de lunares con placa TAGGY",taggy:1,zone:"Fracc. Los Héroes, Mérida",date:"2026-11-17",reward:"$1,000 MXN",contact:"999 123 4567",photo:"catalino.jpg"},
    {name:"Nieve",type:"Perro",breed:"",size:"Mediano",desc:"Pelaje blanco y nariz oscura. Es muy tranquila y amigable. Lleva una camiseta rosa.",collar:"Sin collar visible",taggy:0,zone:"Francisco de Montejo, Mérida",date:"2026-11-16",reward:"",contact:"999 000 0000",photo:"perra.png"},
    {name:"Canela",type:"Perro",breed:"Vizsla",size:"Grande",desc:"Pelo corto color cobre. Es activa y muy cariñosa.",collar:"Collar verde olivo con hebilla dorada",taggy:0,zone:"Itzimná, Mérida",date:"2026-11-15",reward:"$500 MXN",contact:"999 111 1111",photo:"perro_perdido.jpg"},
    {name:"Misi",type:"Gato",breed:"",size:"Chico",desc:"Gato blanco con manchas. Es tímido y se esconde cuando hay ruido.",collar:"Collar naranja con placa TAGGY",taggy:1,zone:"Centro, Mérida",date:"2026-11-14",reward:"",contact:"999 222 2222",photo:"gato.png"}];
