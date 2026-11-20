@@ -79,12 +79,17 @@ if(lostGrid){
    dg=String(r.contact||"").replace(/\D/g,""),c=String(r.contact||""),
    act=dg.length>=10?`<a class="button primary" href="tel:+52${dg.slice(-10)}">📞 Llamar al dueño</a>`:c.includes("@")?`<a class="button primary" href="mailto:${escapeHTML(c)}">✉ Escribir al dueño</a>`:"",
    dt=r.date?new Date(r.date+"T12:00").toLocaleDateString("es-MX",{day:"numeric",month:"long"}):"";
-   return `<article class="recent-card"><div class="recent-photo">${ph}<span class="recent-badge">SE BUSCA</span></div><div class="recent-info"><h3>${escapeHTML(r.name)}</h3><div class="chips">${chips}</div><p><strong>Zona:</strong> ${escapeHTML(r.zone)}${dt?" · "+dt:""}</p><p>${escapeHTML(r.desc||r.description)}</p>${r.collar?`<p><strong>Collar:</strong> ${escapeHTML(r.collar)}</p>`:""}${r.reward?`<span class="reward">💰 Recompensa: ${escapeHTML(r.reward)}</span>`:""}<p><strong>Contacto:</strong> ${escapeHTML(c)}</p>${act}</div></article>`};
-  const all=[...readList("taggyReports"),...SIM],q=document.getElementById("lostSearch");
+   return `<article class="recent-card"><div class="recent-photo">${ph}<span class="recent-badge">SE BUSCA</span></div><div class="recent-info"><h3>${escapeHTML(r.name)}</h3><div class="chips">${chips}</div><p><strong>Zona:</strong> ${escapeHTML(r.zone)}${dt?" · "+dt:""}</p><p>${escapeHTML(r.desc||r.description)}</p>${r.collar?`<p><strong>Collar:</strong> ${escapeHTML(r.collar)}</p>`:""}${r.reward?`<span class="reward">💰 Recompensa: ${escapeHTML(r.reward)}</span>`:""}<p><strong>Contacto:</strong> ${escapeHTML(c)}</p>${act}${r._i!==undefined?`<button type="button" class="button secondary found-btn" data-i="${r._i}">✓ Ya la encontré: quitar el reporte</button>`:""}</div></article>`};
+  let all=[];const q=document.getElementById("lostSearch");function load(){all=[...readList("taggyReports").map((r,i)=>({...r,_i:i})),...SIM]}
   function draw(){const v=(q.value||"").toLowerCase(),l=all.filter(r=>[r.name,r.breed,r.zone,r.type].join(" ").toLowerCase().includes(v));
     lostGrid.innerHTML=l.map(card).join("")||'<div class="empty">No hay mascotas perdidas con esa búsqueda.</div>';
     document.getElementById("lostCount").textContent=l.length+(l.length==1?" mascota perdida":" mascotas perdidas")}
-  q.addEventListener("input",draw);draw();
+  load();q.addEventListener("input",draw);draw();
+  lostGrid.addEventListener("click",e=>{const b=e.target.closest(".found-btn");if(!b)return;
+    if(!confirm("¿Ya encontraste a tu mascota? Se quitará el reporte de esta lista."))return;
+    const a=readList("taggyReports"),r=a.splice(+b.dataset.i,1)[0];localStorage.setItem("taggyReports",JSON.stringify(a));
+    try{const ap=JSON.parse(localStorage.getItem("taggyApp"));if(ap&&ap.lost&&(!ap.lost.rid||!r||ap.lost.rid===r.id)){ap.lost=null;localStorage.setItem("taggyApp",JSON.stringify(ap))}}catch(x){}
+    load();draw();alert("¡Qué alegría! Quitamos el reporte 🏠")});
 }
 
 /* ========================================
@@ -649,7 +654,7 @@ addEventListener('scroll',()=>{
   if(bar){const h=document.documentElement;bar.style.width=(scrollY/(h.scrollHeight-h.clientHeight||1)*100)+'%'}
 },{passive:true});
 
-const sel='.section-title,.page-title>*,.card,.product-card,.vet-card,.form-card,.side-card,.contact-info,.alliance-box,.shop-info,.cart-summary,.checkout-card,.stat,.faq-post,.cta-band,.marquee,.nfc-section,.recent-card,.mini-phone';
+const sel='.section-title,.page-title>*,.card,.product-card,.vet-card,.form-card,.side-card,.contact-info,.alliance-box,.shop-info,.cart-summary,.checkout-card,.stat,.faq-post,.cta-band,.nfc-section,.recent-card';
 const io=new IntersectionObserver(es=>es.forEach(e=>{
   if(!e.isIntersecting)return;const el=e.target;el.classList.add('in');io.unobserve(el);
   setTimeout(()=>el.classList.remove('reveal','in'),1300);
